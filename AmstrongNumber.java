@@ -23,11 +23,24 @@ public class AmstrongNumber
         int n = s.nextInt();
         s.close();
         int org = n;
+        int temp = n;
+        int dig = 0;
+        while(temp > 0)
+        {
+            dig++;
+            temp /= 10;
+        }
         int sum = 0;
+        temp = n;
         while(n > 0)
         {
             int r = n % 10;
-            sum += r * r * r;
+            int pow = 1;
+            for(int i = 0; i < dig; i++)
+            {
+                pow = pow * r;
+            }
+            sum += pow;
             n /= 10;
         }
         if(org == sum)
